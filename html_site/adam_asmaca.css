@@ -1,0 +1,72 @@
+body {
+  font-family: sans-serif;
+  background: linear-gradient(-45deg, #111, #333, #111, #222);
+  background-size: 400% 400%;
+  animation: bgFlow 10s ease infinite;
+  color: white;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+#word {
+  font-size: 2rem;
+  letter-spacing: 10px;
+  margin: 20px auto;
+}
+
+.buttons button {
+  margin: 5px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  background-color: #3498db;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttons button:hover {
+  background-color: #2980b9;
+}
+
+.buttons button:disabled {
+  background-color: #555;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+#status, #message {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+header {
+  background-color: #1f1f1f;
+  padding: 1rem;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+nav ul li {
+  margin: 0 1.5rem;
+}
+nav ul li a {
+  text-decoration: none;
+  color: #e0e0e0;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+nav ul li a:hover {
+  color: #ffffff;
+}

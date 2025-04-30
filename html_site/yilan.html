@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Yılan Oyunu</title>
+  <link rel="stylesheet" href="yilan.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="about.html">Hakkımda</a></li>
+        <li><a href="contact.html">İletişim</a></li>
+        <li><a href="gallery.html">Galerim</a></li>
+        <li><a href="sertifika.html">Sertifikalarım</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h1>Yılan Oyunu (W A S D ile Oynanır)</h1>
+  <canvas id="game" width="400" height="400"></canvas>
+  <p id="score">Skor: 0</p>
+
+  <script>
+    const canvas = document.getElementById("game");
+    const ctx = canvas.getContext("2d");
+
+    const gridSize = 20;
+    const tileCount = canvas.width / gridSize;
+
+    let snake = [{ x: 10, y: 10 }];
+    let food = { x: 5, y: 5 };
+    let dx = 0;
+    let dy = 0;
+    let score = 0;
+
+    function draw() {
+      ctx.fillStyle = "#111";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Food
+      ctx.fillStyle = "#f00";
+      ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
+
+      // Snake
+      ctx.fillStyle = "#0f0";
+      snake.forEach(part => {
+        ctx.fillRect(part.x * gridSize, part.y * gridSize, gridSize, gridSize);
+      });
+
+      const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+      snake.unshift(head);
+
+      if (head.x === food.x && head.y === food.y) {
+        score++;
+        document.getElementById("score").textContent = "Skor: " + score;
+        food = {
+          x: Math.floor(Math.random() * tileCount),
+          y: Math.floor(Math.random() * tileCount)
+        };
+      } else {
+        snake.pop();
+      }
+
+      // Game over
+      if (
+        head.x < 0 || head.y < 0 ||
+        head.x >= tileCount || head.y >= tileCount ||
+        snake.slice(1).some(p => p.x === head.x && p.y === head.y)
+      ) {
+        alert("Oyun Bitti! Skor: " + score);
+        snake = [{ x: 10, y: 10 }];
+        dx = dy = 0;
+        score = 0;
+        document.getElementById("score").textContent = "Skor: 0";
+      }
+    }
+
+    document.addEventListener("keydown", e => {
+      switch (e.key.toLowerCase()) {
+        case "w":
+          if (dy === 0) { dx = 0; dy = -1; }
+          break;
+        case "s":
+          if (dy === 0) { dx = 0; dy = 1; }
+          break;
+        case "a":
+          if (dx === 0) { dx = -1; dy = 0; }
+          break;
+        case "d":
+          if (dx === 0) { dx = 1; dy = 0; }
+          break;
+      }
+    });
+
+    setInterval(draw, 150);
+  </script>
+  <footer>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/semih-eren-54b614338/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://wa.me/905511663671" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:semiherenn05@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+      <a href="https://github.com/Semiheren05" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com/semiheren05" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>2025 Semih Eren</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Adam Asmaca</title>
+    <!-- CSS Dosyasını Bağlama -->
+    <link rel="stylesheet" href="adam_asmaca.css"> <!-- CSS dosyanızın yolu burada belirtilmeli -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+
+    <header>
+        <nav>
+          <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="about.html">Hakkımda</a></li>
+            <li><a href="contact.html">İletişim</a></li>
+            <li><a href="gallery.html">Galerim</a></li>
+            <li><a href="sertifika.html">Sertifikalarım</a></li>
+          </ul>
+        </nav>
+      </header>
+
+    <h1>Adam Asmaca</h1>
+    <div id="word"></div>
+    <div class="buttons" id="letters"></div>
+    <div id="status"></div>
+    <div id="message"></div>
+
+    <script>
+        // Türkçe kelime listesi
+        var words = [
+            "BİLGİSAYAR", "TAHTA", "KÜPE", "PEKMEZ", "DERGİ",
+            "ŞEKER", "GÖZLÜK", "KÖPEK", "MÜHENDİS", "ÜNİVERSİTE",
+            "ŞAHİN", "ÜZGÜN", "DÜĞÜN", "AĞAÇ", "İZMİR"
+        ];
+        // Seçilen kelime (büyük harf)
+        var selectedWord = words[Math.floor(Math.random() * words.length)];
+        // Kelimenin görüntülenecek hali (alt çizgiler ile)
+        var wordDisplay = Array(selectedWord.length).fill("_");
+        // Yanlış tahmin sayısı
+        var wrongCount = 0;
+        // Harf düğmeleri için Türkçe alfabe (özel karakterlerle)
+        var letters = ["A","B","C","Ç","D","E","F","G","Ğ","H","I","İ","J","K","L","M","N","O","Ö","P","R","S","Ş","T","U","Ü","V","Y","Z"];
+
+        // Kelimeyi ekranda güncelle
+        function updateWordDisplay() {
+            document.getElementById("word").textContent = wordDisplay.join(" ");
+        }
+
+        // Oyun durumunu kontrol et (kazanç veya kayıp)
+        function checkGameStatus() {
+            if (!wordDisplay.includes("_")) {
+                document.getElementById("message").textContent = "Tebrikler! Kazandınız!";
+                disableAllButtons();
+            } else if (wrongCount >= 6) {
+                document.getElementById("message").textContent = "Maalesef kaybettiniz! Doğru kelime: " + selectedWord;
+                disableAllButtons();
+            }
+        }
+
+        // Tüm harf düğmelerini devre dışı bırak
+        function disableAllButtons() {
+            var allButtons = document.querySelectorAll("#letters button");
+            allButtons.forEach(function(btn) {
+                btn.disabled = true;
+            });
+        }
+
+        // Harf tahmini fonksiyonu
+        function guessLetter(letter) {
+            var found = false;
+            for (var i = 0; i < selectedWord.length; i++) {
+                if (selectedWord[i] === letter) {
+                    wordDisplay[i] = letter;
+                    found = true;
+                }
+            }
+            // Eğer harf kelimede yoksa yanlış sayısını artır
+            if (!found) {
+                wrongCount++;
+                document.getElementById("status").textContent = "Yanlış Tahmin: " + wrongCount + " / 6";
+            }
+            // Güncellenen kelime halini ekrana yaz
+            updateWordDisplay();
+            // Düğmeyi devre dışı bırak
+            document.getElementById("btn" + letter).disabled = true;
+            // Oyun durumunu kontrol et
+            checkGameStatus();
+        }
+
+        // Harf düğmelerini oluştur
+        window.onload = function() {
+            var lettersDiv = document.getElementById("letters");
+            for (var i = 0; i < letters.length; i++) {
+                (function(letter) {
+                    var button = document.createElement("button");
+                    button.textContent = letter;
+                    button.id = "btn" + letter;
+                    button.onclick = function() { guessLetter(letter); };
+                    lettersDiv.appendChild(button);
+                })(letters[i]);
+            }
+            // Başlangıçta kelime alt çizgileri ekrana yaz
+            updateWordDisplay();
+            document.getElementById("status").textContent = "Yanlış Tahmin: 0 / 6";
+        };
+    </script>
+
+<a href="index.html" class="btn">Ana Sayfaya Dön</a>
+
+</body>
+</html>
