@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    background: linear-gradient(-45deg, #111, #333, #111, #222);
+    background-size: 400% 400%;
+    animation: bgFlow 10s ease infinite;
+    color: white;
+    font-family: sans-serif; 
+    height: 100vh;
+  }
+  
+  canvas {
+    background-color: #222;
+    box-shadow: 0 0 20px #0ff;
+    border: 2px solid #0ff;
+  }
+  header {
+    background-color: #1f1f1f;
+    padding: 1rem;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+  nav ul li {
+    margin: 0 1.5rem;
+  }
+  nav ul li a {
+    text-decoration: none;
+    color: #e0e0e0;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  nav ul li a:hover {
+    color: #ffffff;
+  }
