@@ -158,6 +158,7 @@ footer {
   margin-top: 2rem;
 }
 
+
 .photo-gallery-section {
   padding: 20px;
   text-align: center;
@@ -219,19 +220,24 @@ footer {
   user-select: none;
 }
 .social-links {
-  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; 
+  margin-bottom: 15px;
 }
 
 .social-links a {
-  margin: 0 8px;
-  color: #444;
-  font-size: 20px;
+  color: #fff; 
+  font-size: 24px; 
+  transition: color 0.3s ease;
   text-decoration: none;
 }
 
 .social-links a:hover {
-  color: #0077b5; 
+  color: #1da1f2; 
 }
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
