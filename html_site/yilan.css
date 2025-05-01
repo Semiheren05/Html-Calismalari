@@ -51,13 +51,20 @@ nav ul li a:hover {
 .content {
   flex: 1;
 }
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
 footer {
   text-align: center;
-  padding: 1rem;
+  padding: 20px;
   background: #1f1f1f;
   color: #e0e0e0;
+  margin-top: 2rem;
 }
+
 
 footer .social-links a {
   transition: transform 0.3s ease;
