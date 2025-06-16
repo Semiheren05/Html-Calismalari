@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim - Motosiklet Dünyası</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <h1>Motosiklet Dünyası</h1>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="spor-motosikletler.html">Spor Motosikletler</a></li>
+                    <li><a href="turizm-motosikletler.html">Turizm Motosikletler</a></li>
+                    <li><a href="klasik-motosikletler.html">Klasik Motosikletler</a></li>
+                    <li><a href="bakim.html">Bakım</a></li>
+                    <li><a href="torque.html">Torque</a></li>
+                    <li><a href="hizmetler.html">Hizmetler</a></li>
+                    <li><a href="motorculuk.html">TR Motorculuk</a></li>
+                    <li><a href="iletisim.html" class="active">İletişim</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="anasayfa" class="hero">
+            <h1>İletişim</h1>
+            <p>Bizimle iletişime geçin</p>
+        </section>
+
+        <section class="iletisim">
+            <div class="iletisim-konteyner">
+                <div class="iletisim-form">
+                    <h2>Bize Ulaşın</h2>
+                    <form id="iletisim-form">
+                        <div class="form-grup">
+                            <label for="ad">Adınız:</label>
+                            <input type="text" id="ad" name="ad" required>
+                        </div>
+                        <div class="form-grup">
+                            <label for="email">E-posta:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-grup">
+                            <label for="tel">Telefon Numarası:</label>
+                            <input type="tel" id="tel" name="tel" placeholder="5xx xxx xx xx">
+                        </div>
+                        <div class="form-grup">
+                            <label for="konu">Konu:</label>
+                            <select id="konu" name="konu" required>
+                                <option value="">Seçiniz</option>
+                                <option value="bakim">Bakım ve Onarım</option>
+                                <option value="sorular">Genel Sorular</option>
+                                <option value="hizmetler">Hizmetler</option>
+                                <option value="diğer">Diğer</option>
+                            </select>
+                        </div>
+                        <div class="form-grup">
+                            <label for="mesaj">Mesajınız:</label>
+                            <textarea id="mesaj" name="mesaj" required></textarea>
+                        </div>
+                        <div class="form-grup">
+                            <button type="submit" class="submit-btn">Gönder</button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="iletisim-logolar">
+            <div class="iletisim-logo">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Atatürk Caddesi No:123<br>Kağıthane, İstanbul</p>
+            </div>
+            <div class="iletisim-logo">
+                <i class="fas fa-phone"></i>
+                <p>(212) 123 45 67<br>(212) 123 45 68</p>
+            </div>
+            <div class="iletisim-logo">
+                <i class="fas fa-envelope"></i>
+                <p>bakim@motosikletdunyasi.com<br>bilgi@motosikletdunyasi.com</p>
+            </div>
+            <div class="iletisim-logo">
+                <i class="fas fa-clock"></i>
+                <p>Pazartesi-Cuma: 09:00-18:00<br>Cumartesi: 09:00-13:00</p>
+            </div>
+        </div>
+        <p class="footer-haklar">&copy; 2025 Motosiklet Dünyası. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
